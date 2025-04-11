@@ -5,7 +5,7 @@
     <decisions>
         <name>PriorityStatus</name>
         <label>PriorityStatus</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -22,6 +22,21 @@
                 <targetReference>UpdateStatus</targetReference>
             </connector>
             <label>HighPriority</label>
+        </rules>
+        <rules>
+            <name>MediumPriority</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Priority</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Medium</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateMPStatus</targetReference>
+            </connector>
+            <label>MediumPriority</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -47,6 +62,19 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
+        <name>UpdateMPStatus</name>
+        <label>UpdateMPStatus</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Escalated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>UpdateStatus</name>
         <label>UpdateStatus</label>
         <locationX>50</locationX>
@@ -60,7 +88,7 @@
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>PriorityStatus</targetReference>
