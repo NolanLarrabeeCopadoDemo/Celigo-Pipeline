@@ -5,7 +5,7 @@
     <decisions>
         <name>Opportunity_Type</name>
         <label>Opportunity Type</label>
-        <locationX>182</locationX>
+        <locationX>314</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -22,6 +22,21 @@
                 <targetReference>Set_amount</targetReference>
             </connector>
             <label>New Customer</label>
+        </rules>
+        <rules>
+            <name>Existing_Business</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Existing Business</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Amount2</targetReference>
+            </connector>
+            <label>Existing Business</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -59,8 +74,21 @@
         </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
+    <recordUpdates>
+        <name>Set_Amount2</name>
+        <label>Set Amount</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Amount</field>
+            <value>
+                <numberValue>10000.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
-        <locationX>56</locationX>
+        <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Opportunity_Type</targetReference>
