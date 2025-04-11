@@ -18,4 +18,4 @@
 # Exclude all Lightning web component bundle directories from auto-resolve
 **/lwc/**
 # Exclude all Layouts
-# **/layouts/*.layout-meta.xml
+**/layouts/*.layout-meta.xml
